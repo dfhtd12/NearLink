@@ -61,7 +61,8 @@
 
 #### 2.管脚定义
 
-![YJDY](..\Image\HH-D03\YJDY.png)
+<img src="..\Image\HH-D03\GNBJ.png" alt="GNBJ"/>
+
 
 <center>图2.2 HH-D03星闪开发板接口</center>
 
