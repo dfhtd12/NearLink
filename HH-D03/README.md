@@ -4,7 +4,7 @@
 
 #### 1概述
 
-![HH-D03](..\Image\HH-D03\HH-D03\HH-D03.png)
+![HH-D03](..\Image\HH-D03\HH-D03.png)
 
 主板是基于海思星闪BS21的解决方案，支持BLE5.3协议和BLE Mesh功能，支持SLE1.0协议和SLE Mesh功能，可广泛适用于智能家电等物联网智能终端领域。
 
