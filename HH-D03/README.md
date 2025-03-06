@@ -4,7 +4,7 @@
 
 #### 1概述
 
-<img src="Image/HH-D03.png" alt="1" style="zoom:25%;" />
+<img src="..\Image\HH-D03\HH-D03.png" alt="1" style="zoom:25%;" />
 
 主板是基于海思星闪BS21的解决方案，支持BLE5.3协议和BLE Mesh功能，支持SLE1.0协议和SLE Mesh功能，可广泛适用于智能家电等物联网智能终端领域。
 
@@ -114,7 +114,7 @@
 
 [原理图](doc\HH-D03_V01.pdf )
 
-![8](Image/8.jpg)
+![8](../Image/HH-D03/8.jpg)
 
 ### 三、AT 指令通信使用指南
 
@@ -254,9 +254,7 @@ AT+GATTCFNDSERV=1,0,0x1122\n
 AT+GATTCWRITEREQ=1,0,17,1,0x11\n
 ```
 
-​	服务端打印接收数据说明收发正常。
-
-![image-20241119095511581](Image/image-20241119095511581.png)	2)服务端向客户端发送消息
+​	服务端打印接收数据说明收发正常。![image-20241119095511581](../Image/HH-D03/BLEServerData.png)	2)服务端向客户端发送消息
 
 ​	服务端发送通知
 
@@ -270,9 +268,7 @@ AT+GATTSSNDNTFY=1,0,14,1,0x11\n
 AT+GATTCREADBYHDL=1,0,14\n
 ```
 
-​	客户端打印接收数据说明收发正常
-
-![image-20241119101021678](Image/image-20241119101021678.png)
+​	客户端打印接收数据说明收发正常![image-20241119101021678](../Image/HH-D03/BLEClientData.png)
 
 #### 2.星闪AT通信流程
 
@@ -404,9 +400,7 @@ AT+SSAPCFNDSTRU=1,0,1\n
 AT+SSAPCWRITECMD=0,0,1,0,5,0x1122334455\n
 ```
 
-​	服务端打印接收数据说明收发正常
-
-![image-20241119102853682](Image/image-20241119102853682.png)
+​	服务端打印接收数据说明收发正常![image-20241119102853682](../Image/HH-D03/SLEServerData.png)
 
 ​	2）服务端向客户端发送消息
 
@@ -422,7 +416,5 @@ AT+SSAPSSNDNTFY=0,1,0,2,0xAA55\n
 AT+SSAPCREADREQ=0,0,1,0\n
 ```
 
-​	客户端打印接收数据说明收发正常。
-
-![image-20241119103004273](Image/image-20241119103004273.png)
+​	客户端打印接收数据说明收发正常。![image-20241119103004273](../Image/HH-D03/SLEClientData.png)
 
