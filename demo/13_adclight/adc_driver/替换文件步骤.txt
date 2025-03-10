@@ -1,0 +1,5 @@
+1.替換device/soc/hisilicon/ws63v100/sdk/drivers/chips/ws63/porting/adc文件夹为替换1下的adc文件夹。
+2.替换device/soc/hisilicon/ws63v100/sdk/drivers/drivers/driver/adc文件夹为替换2下的adc文件夹。
+3.替换device/soc/hisilicon/ws63v100/sdk/drivers/drivers/hal/adc文件夹为替换3下的adc文件夹。
+4.替换device/soc/hisilicon/ws63v100/sdk/include/driver/adc.h头文件为替换4下的adc.h
+
