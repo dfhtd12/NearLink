@@ -1,33 +1,33 @@
-# HopeRun IoT Development Kit--MessageQueue
+# 润和星闪派物联网开发套件--消息队列（MessageQueue）
 
 ![hihope_illustration](../../Image/hihope_illustration.png)
 
-An integrated software and hardware development kit based on WS63E solution, providing a comprehensive suite for embedded system development.
+[润和星闪派物联网开发套件](https://item.taobao.com/item.htm?abbucket=16&id=816685710481&ns=1&priceTId=214783b117346662457694855ed644&skuId=5533042544092&spm=a21n57.sem.item.49.46a639031zWytE&utparam=%7B%22aplus_abtest%22%3A%22b28048df8f009463834be6bdac2a3713%22%7D&xxc=taobaoSearch) 基于海思WS63E解决方案的一套软硬件组合的综合性开发套件。
 
 ![wifi_iot](../../Image/HH-K01.png)
 
 ## 一、MessageQueue API
 
-| API                       | Description                                                  |
+| API名称                   | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| osMessageQueueNew         | Create and initialize a message queue                        |
-| osMessageQueueGetName     | Get the name of the specified message queue                  |
-| osMessageQueuePut         | Send one message to the specified message queue; if the message queue is full, return a timeout |
-| osMessageQueueGet         | Receive one message from the specified message queue; if the message queue is empty, return a timeout |
-| osMessageQueueGetCapacity | Get the capacity of the specified message queue              |
-| osMessageQueueGetMsgSize  | Get the maximum message size that can be stored in the specified message queue |
-| osMessageQueueGetCount    | Get the current number of messages in the specified message queue |
-| osMessageQueueGetSpace    | Get the number of additional messages that can be stored in the specified message queue |
-| osMessageQueueReset       | Reset the specified message queue to its initial state       |
-| osMessageQueueDelete      | Delete the specified message queue                           |
+| osMessageQueueNew         | 创建和初始化一个消息队列                                     |
+| osMessageQueueGetName     | 返回指定的消息队列的名字                                     |
+| osMessageQueuePut         | 向指定的消息队列存放1条消息，如果消息队列满了，那么返回超时  |
+| osMessageQueueGet         | 从指定的消息队列中取得1条消息，如果消息队列为空，那么返回超时 |
+| osMessageQueueGetCapacity | 获得指定的消息队列的消息容量                                 |
+| osMessageQueueGetMsgSize  | 获得指定的消息队列中可以存放的最大消息的大小                 |
+| osMessageQueueGetCount    | 获得指定的消息队列中当前的消息数                             |
+| osMessageQueueGetSpace    | 获得指定的消息队列中还可以存放的消息数                       |
+| osMessageQueueReset       | 将指定的消息队列重置为初始状态                               |
+| osMessageQueueDelete      | 删除指定的消息队列                                           |
 
-## 2. Code
+## 二、代码分析
 
-`osMessageQueueNew` creates a message queue
+`osMessageQueueNew`创建一个消息队列
 
-The sender sends its `count` value and the thread ID each time, and then increments `count` by 1
+发送者每次将自己`count`的值与线程ID发送，并将`count`加1；
 
-The receiver retrieves a message from the message queue and then prints it out
+接受者从消息队列中获取一条信息，然后将其打印输出
 
 ```c
 void sender_thread(void *arg) {
@@ -55,7 +55,7 @@ void receiver_thread(void *arg) {
 }
 ```
 
-The main program creates three message senders and two message receivers, and then calls the relevant APIs to confirm the filling of the message queue
+主程序创建了三个消息发送者和两个消息接收者，然后调用相关的API确认消息队列的装填
 
 ```c
 void rtosv2_msgq_main(void *arg) {
@@ -89,10 +89,12 @@ void rtosv2_msgq_main(void *arg) {
 }
 ```
 
-## 3. **Compile**
 
-1. Copy the `05_message` directory to the `applications\sample\wifi-iot\app` directory within the Oniro source code.
-2. Modify the `BUILD.gn` in the `applications\sample\wifi-iot\app` directory of the Oniro source code by replacing the `features` variable with:
+
+## 三、如何编译
+
+1. 将05_message目录复制到openharmony源码的`applications\sample\wifi-iot\app`目录下，
+2. 修改openharmony源码的`applications\sample\wifi-iot\app\BUILD.gn`文件，将其中的 `features` 改为：
 
 ```
     features = [
@@ -101,20 +103,20 @@ void rtosv2_msgq_main(void *arg) {
         ...
     ]
 ```
-3. In the file `config.py` located at `device\soc\hisilicon\ws63v100\sdk\build\config\target_config\ws63`, locate the section labeled `'ws63-liteos-app'`. Within this section, add the following code to the `'ram_component'` field:
+3. 在`device\soc\hisilicon\ws63v100\sdk\build\config\target_config\ws63\config.py`文件中，找到`'ws63-liteos-app'`部分，在其`'ram_component'`中，添加以下代码：
 ```
 "message_demo"
 ```
 
-4. In the file `ohos.cmake` located at `device\soc\hisilicon\ws63v100\sdk\libs_url\ws63\cmake`, locate the section labeled `"ws63-liteos-app"`. Within this section, find the `set(COMPONENT_LIST` statement and append the following code to its argument list:
+4. 在`device\soc\hisilicon\ws63v100\sdk\libs_url\ws63\cmake\ohos.cmake`文件中，找到`"ws63-liteos-app"`部分，在其`set(COMPONENT_LIST`部分，添加以下代码：
 ```
 "message_demo"
 ```
-5. Execute the following command in the root directory of the Oniro SDK: `rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
+5. 在openharmony sdk根目录目录执行：`rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
 
-## 4. Result
+## 四、运行结果
 
-**Extract part of the runtime results**
+截取部分运行结果
 
 ```
 [Message Test] recevier1 get 4 from sender2 by message queue.
@@ -142,15 +144,14 @@ void rtosv2_msgq_main(void *arg) {
 [Message Test] recevier2 get 13 from sender2 by message queue.
 ```
 
-### 【Dev-kits】
+### 【套件支持】
 
-##### 1. Online marketplaces  https://item.taobao.com/item.htm?abbucket=16&id=816685710481&ns=1&priceTId=214783b117346662457694855ed644&skuId=5533042544092&spm=a21n57.sem.item.49.46a639031zWytE&utparam=%7B%22aplus_abtest%22%3A%22b28048df8f009463834be6bdac2a3713%22%7D&xxc=taobaoSearch
+##### 1. 套件购买  https://item.taobao.com/item.htm?abbucket=16&id=816685710481&ns=1&priceTId=214783b117346662457694855ed644&skuId=5533042544092&spm=a21n57.sem.item.49.46a639031zWytE&utparam=%7B%22aplus_abtest%22%3A%22b28048df8f009463834be6bdac2a3713%22%7D&xxc=taobaoSearch
 
-##### 2. **Technical Documentation**
+##### 2. 技术资料
 
-- **Gitee CodeCloud** (User Manuals, Specifications, Oniro Development Cases) **https://gitee.com/hihopeorg_group/near-link**
-- **fbb_ws63 Repository** (SDK Packages, Technical Documentation Downloads)**https://gitee.com/HiSpark/fbb_ws63**
+- Gitee码云网站（使用说明书、规格说明书、OpenHarmony开发案例等） **https://gitee.com/hihopeorg_group/near-link**
+- fbb_ws63代码仓（SDK包、技术文档下载）**https://gitee.com/HiSpark/fbb_ws63**
 
-##### 3. **Interaction and Support**
-
-- **Hisilicon Community - NearLink Zone Forum** **https://developer.hisilicon.com/forum/0133146886267870001**
+##### 3. 互动交流
+- 海思社区星闪专区-论坛 **https://developer.hisilicon.com/forum/0133146886267870001**

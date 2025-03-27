@@ -1,10 +1,10 @@
 # HopeRun IoT Development Kit--Thread
 
-![hihope_illustration](https://gitee.com/hihopeorg/hispark-hm-pegasus/raw/master/docs/figures/hihope_illustration.png)
+![hihope_illustration](../../Image/hihope_illustration.png)
 
 An integrated software and hardware development kit based on WS63E solution, providing a comprehensive suite for embedded system development.
 
-![wifi_iot](https://img.alicdn.com/imgextra/i4/3583112207/O1CN01SvRG981SAr7bdEg3i_!!3583112207.png)
+![wifi_iot](../../Image/HH-K01.png)
 
 ## 1. Thread API
 

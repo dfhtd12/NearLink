@@ -1,81 +1,79 @@
-# WIFI连接&WIFI热点实验<a name="ZH-CN_TOPIC_0000001130176841"></a>
+# Wi-Fi Connection & Wi-Fi Hotspot Experiment<a name="ZH-CN_TOPIC_0000001130176841"></a>
 
 
-## OpenharmonySTA模式原始API接口
+## Oniro raw Wi-Fi API interfaces of STA mode.
 
-使用Openharmony原始WiFI API接口进行编程，STA模式需要使用原始STA接口以及一些DHCP客户端接口。
+Use the OpenHarmony raw Wi-Fi API interfaces for programming. In STA mode, you need to use the raw STA interfaces and some DHCP client interfaces.
 
-### STA模式
+### STA mode
 
-OpenharmonyWiFi STA模式的API接口有：
+API of Oniro WiFi STA：
 
-| API                                                          | 功能说明                                |
-| ------------------------------------------------------------ | --------------------------------------- |
-| `WifiErrorCode EnableWifi(void);`                            | 开启STA                                 |
-| `WifiErrorCode DisableWifi(void);`                           | 关闭STA                                 |
-| `int IsWifiActive(void);`                                    | 查询STA是否已开启                       |
-| `WifiErrorCode Scan(void);`                                  | 触发扫描                                |
-| `WifiErrorCode GetScanInfoList(WifiScanInfo* result, unsigned int* size);` | 获取扫描结果                            |
-| `WifiErrorCode AddDeviceConfig(const WifiDeviceConfig* config, int* result);` | 添加热点配置，成功会通过result传出netId |
-| `WifiErrorCode GetDeviceConfigs(WifiDeviceConfig* result, unsigned int* size);` | 获取本机所有热点配置                    |
-| `WifiErrorCode RemoveDevice(int networkId);`                 | 删除热点配置                            |
-| `WifiErrorCode ConnectTo(int networkId);`                    | 连接到热点                              |
-| `WifiErrorCode Disconnect(void);`                            | 断开热点连接                            |
-| `WifiErrorCode GetLinkedInfo(WifiLinkedInfo* result);`       | 获取当前连接热点信息                    |
-| `WifiErrorCode RegisterWifiEvent(WifiEvent* event);`         | 注册事件监听                            |
-| `WifiErrorCode UnRegisterWifiEvent(const WifiEvent* event);` | 解除事件监听                            |
-| `WifiErrorCode GetDeviceMacAddress(unsigned char* result);`  | 获取Mac地址                             |
-| `WifiErrorCode AdvanceScan(WifiScanParams *params);`         | 高级搜索                                |
-
-
-
-#### DHCP 客户端接口
-
-以及DHCP客户端接口：
-
-| API                 | 描述               |
-| ------------------- | ------------------ |
-| netifapi_netif_find | 按名称查找网络接口 |
-| netifapi_dhcp_start | 启动DHCP客户端     |
-| netifapi_dhcp_stop  | 停止DHCP客户端     |
+| API                                                          | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `WifiErrorCode EnableWifi(viod);                             | Enable STA                                                   |
+| `WifiErrorCode DisableWifi(void);`                           | Disable STA                                                  |
+| `int IsWifiActive(void);`                                    | Check if STA mode is enabled                                 |
+| `WifiErrorCode Scan(void);`                                  | Trigger a scan                                               |
+| `WifiErrorCode GetScanInfoList(WifiScanInfo* result, unsigned int* size);` | Get the scan results                                         |
+| `WifiErrorCode AddDeviceConfig(const WifiDeviceConfig* config, int* result);` | Add a hotspot configuration; if successful, the `netid` will be returned via the `result` |
+| `WifiErrorCode GetDeviceConfigs(WifiDeviceConfig* result, unsigned int* size);` | Get all hotspot configurations on the device                 |
+| `WifiErrorCode RemoveDevice(int networkId);`                 | Delete hotspot configuration                                 |
+| `WifiErrorCode ConnectTo(int networkId);`                    | Connect to a hotspot                                         |
+| `WifiErrorCode Disconnect(void);`                            | Disconnect from the hotspot                                  |
+| `WifiErrorCode GetLinkedInfo(WifiLinkedInfo* result);`       | Get the information of the currently connected hotspot       |
+| `WifiErrorCode RegisterWifiEvent(WifiEvent* event);          | Register event listener                                      |
+| `WifiErrorCode UnRegisterWifiEvent(const WifiEvent* event);` | Unregister event listener                                    |
+| `WifiErrorCode GetDeviceMacAddress(unsigned char* result);`  | Get MAC address                                              |
+| `WifiErrorCode AdvanceScan(WifiScanParams *params);`         | Advanced search                                              |
 
 
 
-### AP模式
+#### DHCP Client Interfaces
 
-使用Openharmony原始WiFI API接口进行编程，AP模式需要使用原始AP模式接口以及一些DHCP服务端接口。
-
-OpenharmonyWiFi STA模式的API接口有：
-
-| API                                                          | 说明                 |
-| ------------------------------------------------------------ | -------------------- |
-| `WifiErrorCode EnableHotspot(void);`                         | 打开AP模式           |
-| `WifiErrorCode DisableHotspot(void);`                        | 关闭AP模式           |
-| `WifiErrorCode SetHotspotConfig(const HotspotConfig* config);` | 设置当前热点配置参数 |
-| `WifiErrorCode GetHotspotConfig(HotspotConfig* result);`     | 获取当前热点配置参数 |
-| `int IsHotspotActive(void);`                                 | 查询AP是否已开启     |
-| `WifiErrorCode GetStationList(StationInfo* result, unsigned int* size);` | 获取接入的设备列表   |
+| API                 | Description                        |
+| ------------------- | ---------------------------------- |
+| netifapi_netif_find | Find the network interface by name |
+| netifapi_dhcp_start | Start the DHCP client              |
+| netifapi_dhcp_stop  | Stop the DHCP client               |
 
 
 
-#### DHCP服务端接口
+### AP mode
 
-以及一些DHCP服务端接口：
+Use the Oniro raw Wi-Fi API interfaces for programming. In AP mode, you need to use the raw AP mode interfaces and some DHCP server interfaces.
 
-| API                     | 描述                             |
-| ----------------------- | -------------------------------- |
-| netifapi_netif_set_addr | 设置当前接口的IP、网关、子网掩码 |
-| netifapi_dhcps_start    | 启动DHCP服务端                   |
-| netifapi_dhcps_stop     | 停止DHCP服务端                   |
+The Oniro Wi-Fi STA mode API interfaces include:
+
+| API                                                          | Description                                      |
+| ------------------------------------------------------------ | ------------------------------------------------ |
+| `WifiErrorCode EnableHotspot(void);`                         | Enable AP mode                                   |
+| `WifiErrorCode DisableHotspot(void);`                        | Disable AP mode                                  |
+| `WifiErrorCode SetHotspotConfig(const HotspotConfig* config);` | Get the current hotspot configuration parameters |
+| `WifiErrorCode GetHotspotConfig(HotspotConfig* result);`     | Get the current hotspot configuration parameters |
+| `int IsHotspotActive(void);`                                 | Check if the AP is enabled                       |
+| `WifiErrorCode GetStationList(StationInfo* result, unsigned int* size);` | Get the list of connected devices                |
 
 
-## 实验步骤
+
+#### DHCP Server Interfaces
+
+some DHCP server interfaces:
+
+| API                     | Description                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| netifapi_netif_set_addr | Set the IP, gateway, and subnet mask for the current interface |
+| netifapi_dhcps_start    | Start the DHCP server                                        |
+| netifapi_dhcps_stop     | Stop the DHCP server                                         |
+
+
+## Step
 
 
 
-1. 实验需要两块开发板
-2. 将easy_wifi目录复制到openharmony源码的`applications\sample\wifi-iot\app`目录下，
-3. 修改openharmony源码的`applications\sample\wifi-iot\app\BUILD.gn`文件，将其中的 `features` 改为：
+1. The experiment requires two development boards.
+2. Copy the `easy_wifi` directory to the `applications\sample\wifi-iot\app` directory within the Oniro source code.，
+3. Modify the `BUILD.gn` in the `applications\sample\wifi-iot\app` directory of the Oniro source code by replacing the `features` variable with:
 
 ```
     features = [
@@ -83,20 +81,20 @@ OpenharmonyWiFi STA模式的API接口有：
         "easy_wifi/src:easy_wifi",
     ]
 ```
-4. 在`device\soc\hisilicon\ws63v100\sdk\build\config\target_config\ws63\config.py`文件中，找到`'ws63-liteos-app'`部分，在其`'ram_component'`中，添加以下代码：
+4. In the file `config.py` located at `device\soc\hisilicon\ws63v100\sdk\build\config\target_config\ws63`, locate the section labeled `'ws63-liteos-app'`. Within this section, add the following code to the `'ram_component'` field:
 ```
 "wifi_demo","easy_wifi"
 ```
 
-5. 在`device\soc\hisilicon\ws63v100\sdk\libs_url\ws63\cmake\ohos.cmake`文件中，找到`"ws63-liteos-app"`部分，在其`set(COMPONENT_LIST`部分，添加以下代码：
+5. In the file `ohos.cmake` located at `device\soc\hisilicon\ws63v100\sdk\libs_url\ws63\cmake`, locate the section labeled `"ws63-liteos-app"`. Within this section, find the `set(COMPONENT_LIST` statement and append the following code to its argument list:
 ```
 "wifi_demo" "easy_wifi"
 ```
-6. 在openharmony sdk根目录目录执行：`rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
+6. Execute the following command in the root directory of the Oniro SDK: `rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
 
-7. 给第一块开发板烧录
+7. Flash the first development board.
 
-8. 修改源码中的`applications\sample\wifi-iot\app\easy_wifi\demo\BUILD.gn`文件，将其中的 `sources` 改为：
+8. Modify the `BUILD.gn` in the `applications\sample\wifi-iot\app\14_easy_wifi\demo\BUILD.gn` directory of the Oniro source code by replacing the `sources` variable with:
 
 ```
    sources = [
@@ -105,6 +103,6 @@ OpenharmonyWiFi STA模式的API接口有：
     ]
 ```
 
-9. 在openharmony sdk根目录目录执行：`rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
+9. Execute the following command in the root directory of the Oniro SDK: `rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
 
-10. 给第二块开发板烧录
+10. Flash the second development board.

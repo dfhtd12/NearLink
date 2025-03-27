@@ -1,10 +1,10 @@
 # 润和星闪派物联网开发套件--线程（Thread）
 
-![hihope_illustration](https://gitee.com/hihopeorg/hispark-hm-pegasus/raw/master/docs/figures/hihope_illustration.png)
+![hihope_illustration](../../Image/hihope_illustration.png)
 
 [润和星闪派物联网开发套件](https://item.taobao.com/item.htm?abbucket=16&id=816685710481&ns=1&priceTId=214783b117346662457694855ed644&skuId=5533042544092&spm=a21n57.sem.item.49.46a639031zWytE&utparam=%7B%22aplus_abtest%22%3A%22b28048df8f009463834be6bdac2a3713%22%7D&xxc=taobaoSearch) 基于海思WS63E解决方案的一套软硬件组合的综合性开发套件。
 
-![wifi_iot](https://img.alicdn.com/imgextra/i4/3583112207/O1CN01SvRG981SAr7bdEg3i_!!3583112207.png)
+![wifi_iot](../../Image/HH-K01.png)
 
 ## 一、Thread API
 
@@ -189,5 +189,4 @@ void rtosv2_thread_main(void *arg) {
 
 ##### 3. 互动交流
 - 海思社区星闪专区-论坛 **https://developer.hisilicon.com/forum/0133146886267870001**
-
 
