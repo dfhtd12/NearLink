@@ -1,18 +1,18 @@
-# 润和星闪派物联网开发套件--WiFi
+# HopeRun IoT Development Kit--WiFi
 
-![hihope_illustration](https://gitee.com/hihopeorg/hispark-hm-pegasus/raw/master/docs/figures/hihope_illustration.png)
+![hihope_illustration](../../Image/hihope_illustration.png)
 
-[润和星闪派物联网开发套件](https://item.taobao.com/item.htm?abbucket=16&id=816685710481&ns=1&priceTId=214783b117346662457694855ed644&skuId=5533042544092&spm=a21n57.sem.item.49.46a639031zWytE&utparam=%7B%22aplus_abtest%22%3A%22b28048df8f009463834be6bdac2a3713%22%7D&xxc=taobaoSearch) 基于海思WS63E解决方案的一套软硬件组合的综合性开发套件。
+An integrated software and hardware development kit based on WS63E solution, providing a comprehensive suite for embedded system development.
 
-![wifi_iot](https://img.alicdn.com/imgextra/i4/3583112207/O1CN01SvRG981SAr7bdEg3i_!!3583112207.png)
+![wifi_iot](../../Image/HH-K01.png)
 
 
 
-## 一、如何编译
+## 1. **Compile**
 
-1. 实验需要两块开发板
-2. 将14_easy_wifi目录复制到openharmony源码的`applications\sample\wifi-iot\app`目录下，
-3. 修改openharmony源码的`applications\sample\wifi-iot\app\BUILD.gn`文件，将其中的 `features` 改为：
+1. The experiment requires two development boards.
+2. Copy the `14_easy_wifi` directory to the `applications\sample\wifi-iot\app` directory within the Oniro source code.
+3. Modify the `BUILD.gn` in the `applications\sample\wifi-iot\app` directory of the Oniro source code by replacing the `features` variable with:
 
 ```
     features = [
@@ -22,20 +22,18 @@
         ...
     ]
 ```
-4. 在`device\soc\hisilicon\ws63v100\sdk\build\config\target_config\ws63\config.py`文件中，找到`'ws63-liteos-app'`部分，在其`'ram_component'`中，添加以下代码：
+4. In the file `config.py` located at `device\soc\hisilicon\ws63v100\sdk\build\config\target_config\ws63`, locate the section labeled `'ws63-liteos-app'`. Within this section, add the following code to the `'ram_component'` field:
 ```
 "wifi_demo","easy_wifi"
 ```
 
-5. 在`device\soc\hisilicon\ws63v100\sdk\libs_url\ws63\cmake\ohos.cmake`文件中，找到`"ws63-liteos-app"`部分，在其`set(COMPONENT_LIST`部分，添加以下代码：
+5. In the file `ohos.cmake` located at `device\soc\hisilicon\ws63v100\sdk\libs_url\ws63\cmake`, locate the section labeled `"ws63-liteos-app"`. Within this section, find the `set(COMPONENT_LIST` statement and append the following code to its argument list:
 ```
 "wifi_demo" "easy_wifi"
 ```
-6. 在openharmony sdk根目录目录执行：`rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
-
-7. 给第一块开发板烧录
-
-8. 修改源码中的`applications\sample\wifi-iot\app\14_easy_wifi\demo\BUILD.gn`文件，将其中的 `sources` 改为：
+6. Execute the following command in the root directory of the Oniro SDK: `rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
+7. Flash the first development board.
+8. Modify the `BUILD.gn` in the `applications\sample\wifi-iot\app\14_easy_wifi\demo\BUILD.gn` directory of the Oniro source code by replacing the `sources` variable with:
 
 ```
    sources = [
@@ -44,13 +42,13 @@
     ]
 ```
 
-9. 在openharmony sdk根目录目录执行：`rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
+9. Execute the following command in the root directory of the Oniro SDK: `rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
 
-10. 给第二块开发板烧录
+10. Flash the second development board.
 
-## 二、运行结果
+## 2. Result
 
-复位两块开发板，作为STA端的开发板会与作为AP端的开发板建立连接。成功连接，STA端会有如下打印
+Reset both development boards. The board acting as the STA will establish a connection with the board acting as the AP. Upon successful connection, the STA board will print the following:
 ```
 [16:05:57.546]收←◆STA try connect.
 [16:05:57.645]收←◆drv_soc_ioctl ioctl_cmd->cmd=47.
@@ -72,15 +70,15 @@ drv_soc_ioctl ioctl_cmd->cmd=1.
 
 
 
-### 【套件支持】
+### 【Dev-kits】
 
-##### 1. 套件购买  https://item.taobao.com/item.htm?abbucket=16&id=816685710481&ns=1&priceTId=214783b117346662457694855ed644&skuId=5533042544092&spm=a21n57.sem.item.49.46a639031zWytE&utparam=%7B%22aplus_abtest%22%3A%22b28048df8f009463834be6bdac2a3713%22%7D&xxc=taobaoSearch
+##### 1. Online marketplaces  https://item.taobao.com/item.htm?abbucket=16&id=816685710481&ns=1&priceTId=214783b117346662457694855ed644&skuId=5533042544092&spm=a21n57.sem.item.49.46a639031zWytE&utparam=%7B%22aplus_abtest%22%3A%22b28048df8f009463834be6bdac2a3713%22%7D&xxc=taobaoSearch
 
-##### 2. 技术资料
+##### 2. **Technical Documentation**
 
-- Gitee码云网站（使用说明书、规格说明书、OpenHarmony开发案例等） **https://gitee.com/hihopeorg_group/near-link**
-- fbb_ws63代码仓（SDK包、技术文档下载）**https://gitee.com/HiSpark/fbb_ws63**
+- **Gitee CodeCloud** (User Manuals, Specifications, Oniro Development Cases) **https://gitee.com/hihopeorg_group/near-link**
+- **fbb_ws63 Repository** (SDK Packages, Technical Documentation Downloads)**https://gitee.com/HiSpark/fbb_ws63**
 
-##### 3. 互动交流
-- 海思社区星闪专区-论坛 **https://developer.hisilicon.com/forum/0133146886267870001**
+##### 3. **Interaction and Support**
 
+- **Hisilicon Community - NearLink Zone Forum** **https://developer.hisilicon.com/forum/0133146886267870001**

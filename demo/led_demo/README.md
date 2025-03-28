@@ -1,26 +1,32 @@
-# Led实验<a name="ZH-CN_TOPIC_0000001130176841"></a>
+# Led experiment<a name="ZH-CN_TOPIC_0000001130176841"></a>
 
 ## 一、GPIO API
 
-| API名称                                                      | 说明                                                         |
+| API                                                          | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| unsigned int GpioInit(void);                                 | GPIO模块初始化                                               |
-| unsigned int GpioSetDir(WifiIotGpioIdx id, WifiIotGpioDir dir); | 设置GPIO引脚方向，id参数用于指定引脚，dir参数用于指定输入或输出 |
-| unsigned int GpioSetOutputVal(WifiIotGpioIdx id, WifiIotGpioValue val); | 设置GPIO引脚的输出状态，id参数用于指定引脚，val参数用于指定高电平或低电平 |
-| unsigned int IoSetFunc(WifiIotIoName id, unsigned char val); | 设置引脚功能，id参数用于指定引脚，val用于指定引脚功能        |
-| unsigned int GpioDeinit(void);                               | 解除GPIO模块初始化           
+| unsigned int GpioInit(void);                                 | Initialize the GPIO module                                   |
+| unsigned int GpioSetDir(WifiIotGpioIdx id, WifiIotGpioDir dir); | Set the direction of the GPIO pin, where the `id` parameter specifies the pin and the `dir` parameter specifies whether it is an input or output |
+| unsigned int GpioSetOutputVal(WifiIotGpioIdx id, WifiIotGpioValue val); | Set the output state of the GPIO pin, where the `id` parameter specifies the pin and the `val` parameter specifies the high or low level |
+| unsigned int IoSetFunc(WifiIotIoName id, unsigned char val); | Set the pin function, where the `id` parameter specifies the pin and the `val` parameter specifies the pin function |
+| unsigned int GpioDeinit(void);                               | Deinitialize the GPIO module                                 |
 
-## 二、如何编译
+## 2. **Compile**
 
-1. 将led_demo目录复制到本地openharmony源码的applications\sample\wifi-iot\app目录下
+1. Copy the `led_demo` directory to the `applications\sample\wifi-iot\app` directory within the Oniro source code.
 
-2. 修改openharmony的`applications\sample\wifi-iot\app\BUILD.gn`文件：
-   * 将其中的 features 改为：
-    features = [
-        "led_demo:ledDemo",
+2. Modify the `applications\sample\wifi-iot\app\BUILD.gn` file in OpenHarmony:
+
+   - Change the `features` to:
+
+   ```
+   features = [
+     "led_demo:ledDemo",
     ]
+   ```
 
-3. 修改`device\soc\hisilicon\ws63v100\sdk\libs_url\ws63\cmake\ohos.cmake`文件添加 `"ledDemo"`，如下：
+   
+
+3. Modify the `device\soc\hisilicon\ws63v100\sdk\libs_url\ws63\cmake\ohos.cmake` file to add `"ledDemo"` as follows:
 
     ```
     elseif(${TARGET_COMMAND} MATCHES "ws63-liteos-app")
@@ -32,10 +38,10 @@
     endif()
     ```
 
-4. 修改`device\soc\hisilicon\ws63v100\sdk\build\config\target_config\ws63\config.py`文件在`'ws63-liteos-app'`中`'ram_component': []'`添加 `"ledDemo"`，如下：
+4. Modify the `device\soc\hisilicon\ws63v100\sdk\build\config\target_config\ws63\config.py` file to add `"ledDemo"` to the `'ram_component': []` in the `'ws63-liteos-app'` section as follows:
 
     ```
-
+    
     'ws63-liteos-app': {
         'base_target_name': 'target_ws63_app_rom_template',
         'os': 'liteos',
@@ -61,11 +67,11 @@
         'generate_efuse_bin': True,
         'copy_files_to_interim': True
     },
-
+    
     ```
 
-5. 在openharmony源码目录下执行：`rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
+5. Execute the following command in the root directory of the Oniro SDK: `rm -rf out && hb set -p nearlink_dk_3863 && hb build -f`
 
-## 三、运行结果
+## 3. Result
 
-烧录文件后，按下reset按键，会发现智能（炫彩）灯板RGB灯循环亮起（GPIO7\GPIO10\GPIO11）。
+After flashing the file, press the reset button. You will find that the RGB LEDs on the smart (RGB) light board cycle through their colors (GPIO7, GPIO10, GPIO11).
