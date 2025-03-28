@@ -1,6 +1,5 @@
 # HopeRun IoT Development Kit--Thread
 
-=======
 ![hihope_illustration](https://github.com/HopeRunORG/NearLink/blob/main/Image/HH-K01/hihope_illustration.png)
 
 An integrated software and hardware development kit based on WS63E solution, providing a comprehensive suite for embedded system development.
