@@ -31,6 +31,12 @@ NearLink
    │--- 19_ble_uart
    │--- 20_mqtt_demo
    │--- 21_mqtt_led
+   │--- 22_mqtt_sensor
+   │--- 23_mqtt_sensor
+   │--- 24_mqtt_sensor
+   │--- 25_mqtt_sensor
+   │--- 26_mqtt_sensor
+   │--- 27_mqtt_sensor
    │--- button_example
    │--- demo_uart
    │--- easy_wifi
@@ -49,6 +55,13 @@ NearLink
 │--- HH-M02
 │--- HH-M03
 │--- Image
-    │--- HH-D03
+   │--- HH-D03
+   │--- 15_tcpclient
+   │--- 16_tcpserver
+   │--- 17_udpclient
+   │--- 18_udpserver
+   │--- 19_ble_uart
+   │--- 20_mqtt_demo
+   │--- 21_mqtt_led
 ```
 

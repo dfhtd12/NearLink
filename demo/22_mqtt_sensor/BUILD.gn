@@ -1,0 +1,45 @@
+# Copyright (c) 2022 HiSilicon (Shanghai) Technologies CO., LIMITED.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+static_library("mqtt_sensor") {
+  # 设置编译选项，指定以下编译警告不当做错误处理
+  cflags = [
+    "-Wno-sign-compare",  # 有符号数和无符号数对比
+    "-Wno-unused-parameter",  # 未使用的参数
+  ]
+
+  # Paho-MQTT相关宏定义
+  defines = [
+    "MQTT_TASK",  # 使用线程方式
+    "MQTTCLIENT_PLATFORM_HEADER=mqtt_ohos.h",  # 指定OHOS适配接口文件
+    "CMSIS",  # 使用CMSIS库
+  ]
+
+  # 指定要编译的程序文件
+  sources = [
+    "aht20.c",
+    "hal_iot_gpio_ex.c",
+    "mqtt_sensor_demo.c",  # 主程序文件
+  ]
+
+  # 设置头文件路径
+  include_dirs = [
+    "//commonlibrary/utils_lite/include",
+    "//kernel/liteos_m/kal/cmsis",
+    "//base/iothardware/peripheral/interfaces/inner_api",
+    "//device/soc/hisilicon/ws63v100/sdk/drivers/chips/ws63/rom/drivers/chips/ws63/porting/pinctrl",
+    "//applications/sample/wifi-iot/app/paho_mqtt/MQTTPacket/src",  # MQTTPacket模块接口
+    "//applications/sample/wifi-iot/app/paho_mqtt/MQTTClient-C/src",  # MQTTClient-C模块接口
+    "//applications/sample/wifi-iot/app/paho_mqtt/MQTTClient-C/src/ohos",  # MQTTClient-C模块OHOS适配接口
+  ]
+}
