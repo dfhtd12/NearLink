@@ -32,11 +32,11 @@ NearLink
    │--- 20_mqtt_demo
    │--- 21_mqtt_led
    │--- 22_mqtt_sensor
-   │--- 23_mqtt_sensor
-   │--- 24_mqtt_sensor
-   │--- 25_mqtt_sensor
-   │--- 26_mqtt_sensor
-   │--- 27_mqtt_sensor
+   │--- 23_sle_uart
+   │--- 24_sle_humi
+   │--- 25_sle_led
+   │--- 26_sle_gas
+   │--- 27_sle_oled
    │--- button_example
    │--- demo_uart
    │--- easy_wifi
