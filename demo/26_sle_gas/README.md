@@ -1,4 +1,4 @@
-# 润和星闪派物联网开发套件--（SLE）WS63使用星闪功能发送燃气传感器数据
+# HopeRun IoT Development Kit--（SLE）WS63 transmits data of gas sensor by NearLink
 
 ![hihope_illustration](../../Image/hihope_illustration.png)
 
